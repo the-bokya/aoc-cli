@@ -14,23 +14,23 @@ Valid arguments are: **"input"**, **"puzzle"** and **"submit"**.
    This example fetches the input on the 23rd day and stores it in a text file named text:
    
    `./aoc 23 input > text`
-   
-   
 
 2. **"puzzle" fetches the puzzle for the day and opens it in w3m if present:**
    This gets the puzzle for the 12th day: 
    
    `./aoc 12 puzzle`
-   
-   
 
 3. **"submit" submits your answer to the selected level:**
    This submits your answer for the 2nd level of the 13th day as 1337:
    
    `./aoc 13 submit 2 1337`
 
-## Notes:
+# Notes
 
 1. You need to put your session into the session variable of the script for the script to work correctly.
 2. It would be a good idea to put this script in your path for global accessibility.
 3. Optionally, this script uses w3m and pup
+
+# Disclaimer
+
+This script/repo/tool does follow the [automation guidelines](https://www.reddit.com/r/adventofcode/wiki/faqs/automation/) on the [/r/adventofcode](https://www.reddit.com/r/adventofcode) community wiki.
