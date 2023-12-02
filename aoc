@@ -1,0 +1,47 @@
+#!/usr/bin/bash
+day=$1
+action=$2
+level=$3
+answer=$4
+useragent="github.com/the-bokya/aoc-cli by ayushschaudhari1904@gmail.com"
+session=""
+if [[ "$action" = "input" ]]; then
+  curl -s "https://adventofcode.com/2023/day/$day/input" --compressed -H "User-Agent: $useragent" -H "Cookie: session=$session"
+
+elif [[ "$action" = "puzzle" ]]; then
+  if command -v w3m &> /dev/null; then
+    curl -s "https://adventofcode.com/2023/day/$day" --compressed -H "User-Agent: $useragent" -H "Cookie: session=$session" | w3m -T text/html
+
+  else
+    curl -s "https://adventofcode.com/2023/day/$day" --compressed -H "User-Agent: $useragent" -H "Cookie: session=$session"
+
+  fi
+
+elif [[ "$action" = "submit" ]]; then
+
+  if command -v pup &> /dev/null; then
+    curl -s "https://adventofcode.com/2023/day/$day/answer" --compressed -X POST -H "User-Agent: $useragent" -H "Cookie: session=$session" --data-raw "level=$level&answer=$answer" | pup "article p"
+  else
+    curl -s "https://adventofcode.com/2023/day/$day/answer" --compressed -X POST -H "User-Agent: $useragent" -H "Cookie: session=$session" --data-raw "level=$level&answer=$answer" | grep "<article>"
+
+  fi
+else
+  echo The format is:
+  echo "./aoc <day> <argument> <rest of the script's shit>"
+  echo Valid arguments are: \"input\", \"puzzle\" and \"submit\".
+  echo
+  echo 1. \"input\" gets the input for the puzzle:
+  echo This example fetches the input on the 23rd day and stores it in a text file named text: ./aoc 23 input \> text
+  echo
+  echo 2. \"puzzle\" fetches the puzzle for the day and opens it in w3m if present:
+  echo This gets the puzzle for the 12th day: ./aoc 12 puzzle
+  echo
+  echo 3. \"submit\" submits your answer to the level 
+  echo This submits your answer for the 2nd level of the 13th day as 1337: ./aoc 13 submit 2 1337
+  echo
+  echo
+  echo Notes:
+  echo 1. You need to put your session into the session variable of the script for the script to work correctly.
+  echo 2. It would be a good idea to put this script in your path for global accessibility.
+  echo 3. Optionally, this script uses w3m and pup
+fi
