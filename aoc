@@ -27,17 +27,20 @@ elif [[ "$action" = "submit" ]]; then
   fi
 else
   echo The format is:
-  echo "./aoc <day> <argument> <rest of the script's shit>"
-  echo Valid arguments are: \"input\", \"puzzle\" and \"submit\".
+  echo "./aoc <day> <action> <rest of the script's shit>"
+  echo Valid actions are: \"input\", \"puzzle\" and \"submit\".
   echo
   echo 1. \"input\" gets the input for the puzzle:
-  echo This example fetches the input on the 23rd day and stores it in a text file named text: ./aoc 23 input \> text
+  echo This example fetches the input on the 23rd day and stores it in a text file named text:
+  echo ./aoc 23 input \> text
   echo
   echo 2. \"puzzle\" fetches the puzzle for the day and opens it in w3m if present:
-  echo This gets the puzzle for the 12th day: ./aoc 12 puzzle
+  echo This gets the puzzle for the 12th day:
+  echo ./aoc 12 puzzle
   echo
   echo 3. \"submit\" submits your answer to the level 
-  echo This submits your answer for the 2nd level of the 13th day as 1337: ./aoc 13 submit 2 1337
+  echo This submits your answer for the 2nd level of the 13th day as 1337:
+  echo ./aoc 13 submit 2 1337
   echo
   echo
   echo Notes:
